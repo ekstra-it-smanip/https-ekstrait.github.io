@@ -45,7 +45,7 @@
         <div class="content">
           <h3>Ekstra <span>IT</span></h3>
           <a href="http://absen-ekstra-it-smanip.rf.gd/" class="btn">Absen Disini</a>
-          <a href="https://adibtajuddin1.github.io/divisi-ekstra-it-smanip.github.io/" class="btn">Pilih Divisi Disini</a>
+          <a href="https://adibtajuddin1.github.io/divisi-ekstra-it-smanip.github.io/" class="btn">Pilih Devisi Disini</a>
         </div>
 
         <div class="image">
@@ -173,13 +173,14 @@
     <!-- contact section starts  -->
     <section class="contact" id="contact">
       <h1 class="heading"><span>contact</span> us</h1>
-      <div class="alert alert-success alert-dismissible fade show d-none" role="alert">
-        <strong>Termakasih!</strong> Pesan anda telah kami terima.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+      
       <div class="row">
         <div class="image">
           <img src="images/contact-img.svg" alt="" />
+        </div>
+        <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
+          <strong>Terimakasih!</strong> Pesan Anda telah diterima.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
         <form action="" method="post" name="submit-to-google-sheet">
@@ -188,7 +189,7 @@
           <span>email</span>
           <input type="email" required placeholder="masukan email" maxlength="50" name="email" class="box" />
           <span>nomor telp</span>
-          <input type="number" required placeholder="enter your valid number" name="telpon" class="box" onkeypress="if(this.value.length == 12) return false;" />
+          <input type="number" required placeholder="enter your valie number" max="9999999999" min="0" name="telpon" class="box" onkeypress="if(this.value.length == 10) return false;" />
           <span>pesan</span>
           <input type="text" required placeholder="masukan pesan" maxlength="100" name="pesan" class="box" />
           <span>jenis kelamin</span>
@@ -234,13 +235,18 @@
       const scriptURL = 'https://script.google.com/macros/s/AKfycby-EM7wgjcju21hK25Yldgp91RyQZAI5gKADvpce8gZFokT49a0IDD5RFXPjY4D6yTz0g/exec'
       const form = document.forms['submit-to-google-sheet'];
       const myAlert = document.querySelector('.my-alert');
+
+
       form.addEventListener('submit', e => {
         e.preventDefault()
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-          .then(response => {
-                form.reset();
-          console.log('Success!', response)
-        })
+          .then(response =>{
+         // tampilkan alert
+         myAlert.classList.toggle('d-none');
+         // reset form
+         form.reset();
+         console.log('Success!', response)
+      })
           .catch(error => console.error('Error!', error.message))
       })
     </script>
