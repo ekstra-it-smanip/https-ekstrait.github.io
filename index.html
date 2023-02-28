@@ -19,7 +19,10 @@
     <link rel="stylesheet" href="css/style.css" />
     <header class="header">
       <section class="flex fw-bold">
-        <a href="#home" class="logo">SMAN 1 PORONG</a>
+        <a class="logo navbar-brand lead  fw-bold" href="#">
+          <img src="lo.png" alt="smanip" width="30" height="27" class="d-inline-block align-text-top">
+          SMAN 1 PORONG
+        </a>
 
         <nav class="navbar">
           <a href="#home">home</a>
@@ -189,7 +192,7 @@
           <span>email</span>
           <input type="email" required placeholder="masukan email" maxlength="50" name="email" class="box" />
           <span>nomor telp</span>
-          <input type="number" required placeholder="enter your valie number"  min="0" name="telpon" class="box" onkeypress="if(this.value.length == 12) return false;" />
+          <input type="number" required placeholder="enter your valie number" max="9999999999" min="0" name="telpon" class="box" onkeypress="if(this.value.length == 10) return false;" />
           <span>pesan</span>
           <input type="text" required placeholder="masukan pesan" maxlength="100" name="pesan" class="box" />
           <span>jenis kelamin</span>
